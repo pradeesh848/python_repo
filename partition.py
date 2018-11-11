@@ -34,17 +34,19 @@ def check_partition(half, n, arr):
     return False
 
 
-# input list
-arr = [3, 1, 5, 9, 12]
+try:
+    # fetch list from user
+    arr = [int(x) for x in input("Enter list of integers separated by comma(ex-1,2,3):").split(",")]
+except:
+    print("INVALID INPUT")
+    sys.exit()
 
 # find sum of the given list
 sum = int(sum(arr))
 
-# sort the list
-arr = sorted(arr)
-
 # check if the sum can be divided into two equal halves AND check is the list is partitionable
-if sum % 2 == 0 and check_partition((sum / 2), len(arr), arr):
-    print("Given list is partitionable")
+# using the in-built function sorted() to sort the array
+if sum % 2 == 0 and check_partition((sum / 2), len(arr), sorted(arr)):
+    print("Given list", arr, " is partitionable")
 else:
-    print("Given list is NOT partitionable")
+    print("Given list", arr, " is NOT partitionable")
